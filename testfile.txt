@@ -1,0 +1,36 @@
+ 
+
+OCR - turning your photo into text “
+Fri May 31. 2013 1208 am
+
+I thought I'd throw a quick HOWTO for convening a page of a book into text Optical Character Recognition (OCR)
+
+Codi: Salon all
+
+audio aptaget install :easemcvcc:
+
+Take a photo of your page:
+
+Codi: Salon all
+
+[aspistil] an FBQE-jpg
+
+Convert it to text (OCR):
+
+Codi: Salon all
+
+teasexact page .jpg pagetext:
+This can take the Pi anything from 1 to 10 minutes depending on the image...
+
+Then you have a text ﬁle called pagelext.txt
+
+Codi: Salon all
+
+Cat: pagetext .txt:
+
+Last edited t7, mikeir on Thu Apr17,2014 10:36 am, edited I time in mint
+
+Android app . Raspi Card Image! . dawnlaad and image so cards . Na PC required!
+
+ 
+
