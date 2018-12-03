@@ -18,3 +18,11 @@ The raspberry pi will be in charge of performing the conversion of text to brail
 ## Main Demo
 
 https://youtu.be/oRpzyBsLPJg
+
+## Sketch
+
+[BMO Structure Sketch](https://drive.google.com/open?id=1k19HGCnunsLmAbb3jfyHW14Bk5K356jN)
+
+## BMO
+
+[BMO Physical Structure](https://drive.google.com/open?id=1KfdaO0r_1QDDPvPRGU0cTcoC1TXwqPWE)
