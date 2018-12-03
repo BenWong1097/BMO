@@ -15,17 +15,17 @@ def servo_setup(pin):
     #wiringpi.pwmSetClock(192)
     #wiringpi.pwmSetRange(2000)
     
-def servo_on(pi, pin):
+def servo_on(pi, pin, tune=1):
     #wiringpi.pwmWrite(pin, 250)
     #pi.set_servo_pulsewidth(pin, 2000)
-    pi.set_servo_pulsewidth(pin, 1600)
-    time.sleep(.3)
+    pi.set_servo_pulsewidth(pin, 1550)
+    time.sleep(.3*tune)
     pi.set_servo_pulsewidth(pin, 0)
     #wiringpi.pwmWrite(pin, 0)
     
-def servo_off(pi, pin):
+def servo_off(pi, pin, tune=1):
     #wiringpi.pwmWrite(pin, 50)
-    pi.set_servo_pulsewidth(pin, 1000)
-    time.sleep(.2)
+    pi.set_servo_pulsewidth(pin, 1450)
+    time.sleep(.3*tune)
     pi.set_servo_pulsewidth(pin, 0)
     #wiringpi.pwmWrite(pin, 0)
