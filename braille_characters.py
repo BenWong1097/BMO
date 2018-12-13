@@ -1,3 +1,5 @@
+#braille_characters.py holds all braille characters in the alphabet.
+
 def toBraille(char):
     if not(char.lower() in braille):
         return braille[' ']

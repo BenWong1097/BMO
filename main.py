@@ -1,12 +1,19 @@
-#import RPi.GPIO as GPIO
-from picamera import PiCamera
+'''main.py - BMO (Braille More)
+    - Takes a picture with an attached rpi camera
+    - Processes the text from the image and puts it in a textfile
+    - Moves motors to represent braille characters
+    - Hooks up two buttons to control which characters are shown, and when to take a new image
+'''
 
-import camera
-import pigpio
 from servo import *
 from time import sleep
 from subprocess import call
 from datetime import datetime
+
+import pigpio
+from picamera import PiCamera
+import camera
+
 import os
 os.chdir('/home/pi/Desktop')
 
@@ -17,11 +24,19 @@ DELAY_CHAR = 0.5
 OUTER_TIME_OUT = 3
 INNER_TIME_OUT = 100
 NUM_CHAR = 1
+#Braille Character 1
+# Motors
 s_list = [4, 22, 5, 23, 17, 24]
+# Motor tuning constants
 s_tuning_list = [1, 0.5, .65, .8, 1.5, 1.85]
 s_tuning_off_list = [0.33, 1.65, 1, .3, 2, .76]
+
+#Braille Character 2
 s2_list = []
+# Motors
 s2_tuning_list = []
+#Motor tuning constants
+s2_tuning_off_list = [0.33, 1.65, 1, .3, 2, .76]
 char_i = 0
 session = 0
 
@@ -77,7 +92,7 @@ try:
         if local_session != session:
             for s in s_on_list:
                 if s == 1:
-                    if (s_list[i] == 24):
+                    if s_list[i] == 24:
                         servo_on(pi, s_list[i], s_tuning_list[i])
                     else:
                         servo_off(pi, s_list[i], s_tuning_off_list[i])
@@ -117,7 +132,6 @@ try:
                     sleep(DELAY_CHAR)
                 
                 char2_grid = braille[char_i + 1]
-                #print(char2_grid)
                 #Loop character 2
                 for i in range(0, len(s2_list)):
                     if char2_grid[i] == 1:
@@ -132,12 +146,10 @@ try:
                 sleep(DELAY)
             else:
                 sleep(DELAY)
-        # sleep(5)
-    #    print(char_i)
-    #    print( pi.read(BUTTON1))
+
 except Exception as e:
-    # call(["sudo", "killall", "pigpiod"])
     log_output('OUTPUT.txt', ('Error:\n%s' % str(e)))
+
 finally:
     log_output('OUTPUT.txt', 'Exited main.py...')
 

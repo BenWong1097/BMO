@@ -3,18 +3,19 @@ from picamera import PiCamera
 from time import sleep
 import braille_characters as bc
 
-def get_text():
-    #camera = PiCamera()
+OUTPUT_IMAGE = 'imageTest.jpg'
+OUTPUT_FILE = 'testfile.txt'
 
-    #camera.start_preview()
-    #sleep(5)
-    #camera.capture('/home/pi/Desktop/imageTest.jpg')
-    #camera.stop_preview()
+def get_text():
+    '''get_text(): Integer[6][]
+        Takes an image from a connected RaspberryPi Camera and processes it
+        into an array representation of braille characters.
+        Writes it out in a textfile.
+    '''
+    call(["raspistill", "-o", OUTPUT_IMAGE])
+    call(["tesseract", OUTPUT_IMAGE, "testfile"])
     
-    call(["raspistill", "-o", "imageTest.jpg"])
-    call(["tesseract", "imageTest.jpg", "testfile"])
-    
-    data = open("testfile.txt", "r")
+    data = open(OUTPUT_FILE, "r")
     words = data.read()
     output = ""
     output = output.join([ char if (char.isalnum() or char == ' ') else '' for char in words])
@@ -22,6 +23,7 @@ def get_text():
     print(output)
     output_braille = list(map(bc.toBraille, output))
     
+    #For testing motor functionality
     #output_braille = [[0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0]] * 2
     print(output_braille)
     return output_braille
