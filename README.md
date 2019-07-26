@@ -1,7 +1,6 @@
 # BMO
-CSCE 462 Project: Braille More
 
-## Team Members
+## Contributors
 * Benjamin Wong
 * Omer Fiazuddin
 
